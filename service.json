@@ -1,0 +1,22 @@
+{
+    "cluster": "ecs-cluster",
+    "serviceName": "ecs-service-demo",
+    "taskDefinition": "hello-world",
+    "loadBalancers": [
+        {
+            "targetGroupArn": "arn:aws:elasticloadbalancing:us-east-1:671128135136:targetgroup/ecs-alb-tg/c406e49349f9e95c",
+            "containerName": "hello-world",
+            "containerPort": 80
+        }
+    ],
+    "launchType": "FARGATE",
+    "platformVersion": "LATEST",
+    "networkConfiguration": {
+       "awsvpcConfiguration": {
+          "assignPublicIp": "ENABLED",
+          "securityGroups": [ "sg-02c62c37ee5a0f59a" ],
+          "subnets": [ "subnet-0c91b16c66134b44a", "subnet-0e3bfa826f12bd4c6" ]
+       }
+    },
+    "desiredCount": 1
+}
